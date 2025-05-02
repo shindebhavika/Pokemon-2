@@ -92,7 +92,7 @@ function CarCard({ pokemon, images, types }) {
                 Click card to flip!
                 <Link
                   to={`/pokemon/${pokemon.name}`}
-                  state={{ pokemon }}
+              
                   onClick={(e) => e.stopPropagation()}
                   className="px-3 py-1 bg-white text-yellow-600 rounded hover:text-blue-700 transition"
                 >

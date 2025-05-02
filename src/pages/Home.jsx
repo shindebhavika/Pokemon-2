@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import Filters from "../components/molecules/Filters";
 import CarCard from "../components/molecules/CarCard";
-import { useDispatch, useSelector } from "react-redux";
-import { getCars } from "../store/carSlice";
+
 import Pagination from "../components/atoms/Pagination";
-import Button from "../components/atoms/Button";
+
+import { useCars } from "../context/CarsContext";
 
 function Home() {
-  const dispatch = useDispatch();
-
   const [filters, setFilters] = useState({
     name: "",
     types: [],
@@ -18,11 +16,8 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
 
-  const { cars, status } = useSelector((state) => state.Cars);
-
-  useEffect(() => {
-    dispatch(getCars());
-  }, [dispatch]);
+  const { cars, status } = useCars();
+  
 
   // Extract unique types
   const allTypes = useMemo(() => {
@@ -64,11 +59,14 @@ function Home() {
     );
   }, [filteredAndSortedCars, currentPage, itemsPerPage]);
 
-  const handlePageChange = useCallback((page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  }, [totalPages]);
+  const handlePageChange = useCallback(
+    (page) => {
+      if (page >= 1 && page <= totalPages) {
+        setCurrentPage(page);
+      }
+    },
+    [totalPages]
+  );
 
   return (
     <div className="p-4 sm:p-6 md:p-8 font-sans bg-yellow-50 dark:bg-gray-900 min-h-screen transition-colors">

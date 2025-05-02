@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import axios from "axios";
 import MultiSelect from "../atoms/MultiSelect";
 import { GrCompare } from "react-icons/gr";
@@ -9,7 +9,6 @@ import { PiListHeartDuotone } from "react-icons/pi";
 export default function Filters({
   filters,
   setFilters,
-
   setCurrentPage,
   itemsPerPage,
   setItemsPerPage,
@@ -17,20 +16,53 @@ export default function Filters({
   const [availableTypes, setAvailableTypes] = useState([]);
 
   useEffect(() => {
-    async function fetchTypes() {
-      try {
-        const response = await axios.get("https://pokeapi.co/api/v2/type");
-        const fetchedTypes = response.data.results
-          .map((type) => type.name)
+    axios
+      .get("https://pokeapi.co/api/v2/type")
+      .then((res) => {
+        const types = res.data.results
+          .map((t) => t.name)
           .filter((name) => name !== "shadow" && name !== "unknown");
-        setAvailableTypes(fetchedTypes);
-      } catch (error) {
-        console.error("Error fetching types:", error);
-      }
-    }
-
-    fetchTypes();
+        setAvailableTypes(types);
+      })
+      .catch((err) => console.error("Error fetching types:", err));
   }, []);
+
+  const handleNameChange = useCallback(
+    (e) => {
+      setFilters((prev) => ({ ...prev, name: e.target.value }));
+      setCurrentPage(1);
+    },
+    [setFilters, setCurrentPage]
+  );
+
+  const handleSortChange = useCallback(
+    (val) => {
+      setFilters((prev) => ({ ...prev, sort: val }));
+      setCurrentPage(1);
+    },
+    [setFilters, setCurrentPage]
+  );
+
+  const handleItemsPerPageChange = useCallback(
+    (val) => {
+      setItemsPerPage(Number(val));
+      setCurrentPage(1);
+    },
+    [setItemsPerPage, setCurrentPage]
+  );
+
+  const sortOptions = useMemo(
+    () => [
+      { label: "ID", value: "id" },
+      { label: "Name (A-Z)", value: "name" },
+    ],
+    []
+  );
+
+  const itemsPerPageOptions = useMemo(
+    () => [10, 20, 50].map((n) => ({ label: String(n), value: n })),
+    []
+  );
 
   return (
     <div className="flex flex-wrap gap-4 md:gap-6 p-4 bg-transparent dark:text-white">
@@ -43,15 +75,11 @@ export default function Filters({
           className="bg-gray-100 dark:bg-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2"
           placeholder="Search by Name..."
           value={filters.name}
-          onChange={(e) => {
-            setFilters({ ...filters, name: e.target.value });
-            setCurrentPage(1);
-          }}
+          onChange={handleNameChange}
         />
       </div>
 
       {/* Type Filter */}
-
       <MultiSelect
         filters={filters}
         setFilters={setFilters}
@@ -62,41 +90,32 @@ export default function Filters({
       <SingleSelect
         label="Sort By"
         value={filters.sort}
-        options={[
-          { label: "ID", value: "id" },
-          { label: "Name (A-Z)", value: "name" },
-        ]}
-        onChange={(val) => {
-          setFilters({ ...filters, sort: val });
-          setCurrentPage(1);
-        }}
+        options={sortOptions}
+        onChange={handleSortChange}
       />
 
       <SingleSelect
         label="Items per page"
         value={itemsPerPage}
-        options={[10, 20, 50].map((n) => ({ label: String(n), value: n }))}
-        onChange={(val) => {
-          setItemsPerPage(Number(val));
-          setCurrentPage(1);
-        }}
-      />
-      <div className="flex gap-3">
-      <Button
-        width="w-44"
-        text="My Favorites"
-        Icon={PiListHeartDuotone}
-        to="/my-fav"
-        color="yellow"
+        options={itemsPerPageOptions}
+        onChange={handleItemsPerPageChange}
       />
 
-      <Button
-        width="w-auto"
-        text="Compare"
-        Icon={GrCompare}
-        to="/compare"
-        color="green"
-      />
+      <div className="flex gap-3">
+        <Button
+          width="w-44"
+          text="My Favorites"
+          Icon={PiListHeartDuotone}
+          to="/my-fav"
+          color="yellow"
+        />
+        <Button
+          width="w-auto"
+          text="Compare"
+          Icon={GrCompare}
+          to="/compare"
+          color="green"
+        />
       </div>
     </div>
   );

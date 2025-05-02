@@ -9,11 +9,11 @@ function Navbar() {
        <ThemeToggle/>
 
         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" className="nav-link px-3 text-white hover:underline ">Home</a></li>
-          <li><a href="#" className="nav-link px-3 text-white hover:underline ">Features</a></li>
-          <li><a href="#" className="nav-link px-3 text-white hover:underline ">Pricing</a></li>
-          <li><a href="#" className="nav-link px-3 text-white hover:underline ">FAQs</a></li>
-          <li><a href="#" className="nav-link px-3 text-white hover:underline ">About</a></li>
+          <li><a href="/" className="nav-link px-3 text-white hover:underline ">Home</a></li>
+          <li><a href="/compare" className="nav-link px-3 text-white hover:underline ">Compare</a></li>
+          <li><a href="/my-fav" className="nav-link px-3 text-white hover:underline ">Favorite</a></li>
+          <li><a href="/explore" className="nav-link px-3 text-white hover:underline ">Explore</a></li>
+          <li><a href="/" className="nav-link px-3 text-white hover:underline ">About</a></li>
         </ul>
 
  

@@ -10,6 +10,7 @@ function FavoritesPage() {
   const handleRemove = (id) => {
     const updatedFavorites = favorites.filter((poke) => poke.id !== id);
     setFavorites(updatedFavorites);
+    alert("remove")
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 

@@ -6,13 +6,16 @@ import BackToTopButton from './components/atoms/BackToTopButton';
 import Navbar from './components/molecules/Navbar';
 
 
-import PokemonDetail from './components/molecules/PokemonDetail';
-import Landing from './components/molecules/Landing';
+import PokemonDetail from './pages/PokemonDetail';
+import Landing from './pages/Landing';
 import FavoritesPage from './pages/FavoritesPage';
 import Comparison from './pages/Comparison';
+import { CarsProvider } from './context/CarsContext';
+
 
 function App() {
   return (
+    <CarsProvider>
     <div>
 
   <Navbar/>
@@ -29,6 +32,7 @@ function App() {
 
       <BackToTopButton/>
     </div>
+    </CarsProvider>
   )
 }
 

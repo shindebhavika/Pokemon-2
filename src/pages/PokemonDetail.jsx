@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaBackward } from "react-icons/fa";
-import Button from "../atoms/Button";
+import Button from "../components/atoms/Button";
 
 export default function PokemonDetail() {
   const { name } = useParams();

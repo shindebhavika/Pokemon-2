@@ -28,7 +28,9 @@ const FavoriteCard = ({ pokemon, onRemove }) => {
         />
         <Button
           text="Details"
+        
           to={`/pokemon/${pokemon.name}`}
+     
           Icon={ TfiMore}
           color="yellow"
     width="w-32"

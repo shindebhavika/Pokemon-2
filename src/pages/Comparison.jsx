@@ -3,8 +3,8 @@ import axios from "axios";
 import { Button } from "bootstrap";
 
 function Comparison() {
-  const [pokemon1, setPokemon1] = useState("");
-  const [pokemon2, setPokemon2] = useState("");
+  const [pokemon1, setPokemon1] = useState("3");
+  const [pokemon2, setPokemon2] = useState("4");
   const [data1, setData1] = useState(null);
   const [data2, setData2] = useState(null);
   const [error1, setError1] = useState("");
@@ -29,7 +29,7 @@ function Comparison() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
+    <div className="max-w-5xl mx-auto p-6 justify-center">
       <h2 className="text-3xl font-bold text-center mb-6 font-tagesschrift dark:text-white">
         Compare Pokémon Stats
       </h2>
@@ -39,7 +39,7 @@ function Comparison() {
           <button
             onClick={() => handleRandom(setData1, setError1)}
             type="button"
-            class="btn btn-outline-warning"
+            className="btn btn-outline-warning"
           >
             Random-1 🎲
           </button>
@@ -50,7 +50,7 @@ function Comparison() {
           <button
             onClick={() => handleRandom(setData2, setError2)}
             type="button"
-            class="btn btn-outline-warning"
+          className="btn btn-outline-warning"
           >
             Random-2 🎲
           </button>
