@@ -1,5 +1,5 @@
 import React from 'react'
-import ThemeToggle from './ThemeToggle'
+import ThemeToggle from '../atoms/ThemeToggle'
 
 function Navbar() {
   return (
@@ -16,8 +16,7 @@ function Navbar() {
           <li><a href="#" className="nav-link px-3 text-white hover:underline ">About</a></li>
         </ul>
 
-       
-
+ 
         <div className="text-end">
           <button type="button" className="btn btn-outline-light me-2">Login</button>
           <button type="button" className="btn btn-warning">Sign-up</button>

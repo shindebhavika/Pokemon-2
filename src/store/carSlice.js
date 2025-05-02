@@ -15,6 +15,7 @@ export const getCars = createAsyncThunk("cars/getCars", async () => {
         weight: details.weight,
         abilities: details.abilities,
         sprites: details.sprites,
+        pokemon:pokemon
       };
     })
   );

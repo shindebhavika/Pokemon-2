@@ -1,11 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
+import Home from './pages/Home';
 
-import BackToTopButton from './components/BackToTopButton';
-import Navbar from './components/Navbar';
+import BackToTopButton from './components/atoms/BackToTopButton';
+import Navbar from './components/molecules/Navbar';
 
-import CarDetail from './components/CarDetail';
+
+import PokemonDetail from './components/molecules/PokemonDetail';
+import Landing from './components/molecules/Landing';
+import FavoritesPage from './pages/FavoritesPage';
+import Comparison from './pages/Comparison';
 
 function App() {
   return (
@@ -15,8 +19,11 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/my-fav" element={<CarDetail/>}></Route>
+        <Route path="/" element={<Landing/>}></Route>
+          <Route path="/explore" element={<Home></Home>}></Route>
+          <Route path="/pokemon/:name" element={<PokemonDetail />} />
+          <Route path="/my-fav" element={<FavoritesPage/>}></Route>
+          <Route path="/compare" element={<Comparison></Comparison>}></Route>
         </Routes>
       </Router>
 
