@@ -13,4 +13,4 @@ https://pokehub-one.vercel.app/
 ![Image](https://github.com/user-attachments/assets/fdbd503b-a2f7-4b1b-aa6d-dfece9650c33)
 ![Image](https://github.com/user-attachments/assets/1d5c5844-37e1-4018-8176-54c9499b3124)
 ![Image](https://github.com/user-attachments/assets/7f5e7c01-cd02-4306-86fe-6fd89dfd5549)
-![Image](https://github.com/user-attachments/assets/fe249f27-314e-42ff-9921-b419f9f6112c)
+
