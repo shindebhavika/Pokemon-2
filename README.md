@@ -10,3 +10,4 @@ This fetches detailed info including sprites and id.
 ## 🖼️ Preview
 
 https://pokehub-one.vercel.app/
+<!-- Uploading "02.05.2025_21.44.28_REC.png"... -->
