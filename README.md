@@ -9,4 +9,4 @@ https://pokeapi.co/api/v2/pokemon/{pokeName}
 This fetches detailed info including sprites and id.
 ## 🖼️ Preview
 
-![Detail Page](.\public\02.05.2025_21.44.28_REC.png)
+https://pokehub-one.vercel.app/
